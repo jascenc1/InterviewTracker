@@ -23,7 +23,7 @@ const TaskForm = ({getTask}) => {
  const handleTaskInputChange = (e) => {
    const { name, value } = e.target
    setTask({
-     ...task,
+     ...task,     
      [name]: value // using computed property names to update respective fields when user types in that input text
    });
  };
@@ -66,30 +66,7 @@ const TaskForm = ({getTask}) => {
 
 
 
-//  const handleSubmit = (e) => {
-//    e.preventDefault(); // prevent deault browser form functionality
-//    // gets called if task is not empty by calling trim function that will remove white spaces
-//    if (task.task.trim()) {
-//      addTask({
-//        ...task
-//        // need to add id part here for retrieving that specific id from database 
-//        // id: mongoDB id
-//      });
-
-//      setTask({
-//        ...task, 
-//        task: '',
-//        date: ''
-//      });
-
-//    } 
-//  }
-
-
-
-
-
-
+ 
 
   return (
     <form onSubmit={taskForm}>

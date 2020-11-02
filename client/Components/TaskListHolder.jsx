@@ -34,16 +34,6 @@ const TaskListHolder = () => {
     useEffect(() => {
       const token = localStorage.getItem('tokenStore');
       setToken(token);
-      // axios.get('/api/tasks', {
-      //   headers: {Authorization: token}
-      // })   
-      // .then(res => { 
-      //   console.log(res.data);
-      //   setTasks(res.data);
-      // })
-      // .catch(err => {
-      //   console.log(err);
-      // })
       if (token) {
         getTask(token)
       }
@@ -56,7 +46,7 @@ const TaskListHolder = () => {
 
 
   const deleteTask = (taskMongoID) => {
-    // console.log(taskMongoID);
+    console.log(taskMongoID);
     const token = localStorage.getItem('tokenStore');
     setToken(token);
     axios.delete(`/api/tasks/${taskMongoID}`, {
@@ -73,22 +63,20 @@ const TaskListHolder = () => {
    
   };
 
-  const updateTask = (task) => {
+  const updateTask = (task, id) => {
+    console.log('we are in the tasklist holder')
     console.log(task); // on click shows entire task obj
+    console.log(id);
 
-    // const token = localStorage.getItem('tokenStore');
-    // setToken(token);
-    // axios.put(`/api/tasks/${taskMongoID}`, {
-    //   headers: {Authorization: token}
-    // })
-    // .then(res => {
-    //   // console.log(res);
-    //   const newTasks = tasks.filter((task) => task._id !== taskMongoID);
-    //   setTasks(
-    //     newTasks
-    //   );
-    // })
-    // .catch(err => console.log(err));
+    const token = localStorage.getItem('tokenStore');
+    setToken(token);
+    axios.put(`/api/tasks/${id}`, task, {
+      headers: {Authorization: token}
+    })
+    .then(res => {
+      console.log(res);
+    })
+    .catch(err => console.log(err));
    
   }
 
